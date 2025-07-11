@@ -185,7 +185,7 @@ st.write("### Selecciona una variable para visualizar en el mapa:")
 # st.session_state se usa para guardar el estado de la aplicación, como qué botón está presionado.
 # Esto evita que la selección se reinicie cada vez que el usuario interactúa.
 if 'vista_seleccionada' not in st.session_state:
-    st.session_state['vista_seleccionada'] = 'Resumen de Riesgo' # Vista por defecto al abrir la app.
+    st.session_state['vista_seleccionada'] = 'Riesgo Combinado' # Vista por defecto al abrir la app.
 
 # Diccionario que mapea el nombre del botón a la columna de datos correspondiente.
 vistas = {
@@ -194,7 +194,7 @@ vistas = {
     "Material Precario": "material_precario",
     "Damnificados": "damnificados",
     "Viviendas Destruidas": "viviendas_destruidas",
-    "Resumen de Riesgo": "riesgo_combinado"
+    "Riesgo Combinado": "riesgo_combinado"
 }
 
 # st.columns(6) crea 6 columnas de igual ancho para colocar los botones horizontalmente.
@@ -206,8 +206,8 @@ for i, (nombre_vista, _) in enumerate(list(vistas.items())[:-1]):
         st.session_state['vista_seleccionada'] = nombre_vista
 
 # Crea el último botón ("Riesgo Combinado") con un estilo primario para destacarlo.
-if cols[5].button("Resumen de Riesgo", use_container_width=True, type="primary", key="btn_riesgo"):
-    st.session_state['vista_seleccionada'] = "Resumen de Riesgo"
+if cols[5].button("Riesgo Combinado", use_container_width=True, type="primary", key="btn_riesgo"):
+    st.session_state['vista_seleccionada'] = "Riesgo Combinado"
 
 # ==============================================================================
 # 6. CREACIÓN Y VISUALIZACIÓN DEL MAPA
@@ -247,7 +247,7 @@ st.subheader(f"Descripción de la variable: {vista_actual}")
 
 # Diccionario con los textos explicativos para cada vista.
 descripciones = {
-    "Resumen de Riesgo": "Este índice es un promedio normalizado de todas las variables, ofreciendo una visión general del riesgo sísmico. Un valor más alto indica una mayor vulnerabilidad combinada.",
+    "Riesgo COmbinado": "Este índice es un promedio normalizado de todas las variables, ofreciendo una visión general del riesgo sísmico. Un valor más alto indica una mayor vulnerabilidad combinada.",
     "Peligrosidad Suelos": "Mide la probabilidad de que el suelo predominante del distrito amplifique las ondas sísmicas. Los valores más altos (suelos arenosos o blandos) son más peligrosos que los valores bajos (roca o conglomerado).",
     "Densidad Poblacional": "Representa la cantidad de habitantes por kilómetro cuadrado. Una mayor densidad puede complicar la evacuación y aumentar el número de personas afectadas.",
     "Material Precario": "Indica el número de viviendas construidas con materiales vulnerables (como adobe o quincha). A mayor número, mayor es el riesgo de colapso.",
@@ -271,7 +271,7 @@ st.markdown(
 # st.expander crea una sección desplegable que está colapsada por defecto.
 with st.expander("Ver Conclusiones Detalladas"):
     conclusiones = {
-        "Resumen de Riesgo": """
+        "Riesgo Combinado": """
         El Índice de Resumen de Riesgo consolida múltiples factores para identificar las zonas con mayor y menor vulnerabilidad ante un sismo. Este análisis revela patrones claros en la distribución del riesgo en Lima y Callao.
 
         **Distritos de Mayor Riesgo:**
