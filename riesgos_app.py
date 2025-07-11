@@ -291,7 +291,7 @@ with st.expander("Ver Conclusiones Detalladas"):
         "Viviendas Destruidas": "Similar a los damnificados, el número de viviendas destruidas en el pasado en distritos como Villa El Salvador y Punta Hermosa señala las áreas donde la infraestructura ha sido históricamente más frágil. Es un llamado de atención sobre la calidad de construcción en estas zonas."
     }
     conclusion_actual = conclusiones.get(vista_actual, "")
-    st.markdown(f"<p style='text-align: justify;'>{conclusion_actual}</p>", unsafe_allow_html=True) # Se usa HTML para justificar el texto y mejorar la legibilidad.
+    st.markdown(f"<p style='text-align: justify;'>{conclusion_actual}", unsafe_allow_html=True) # Se usa HTML para justificar el texto y mejorar la legibilidad.
 
 
 # ==============================================================================
