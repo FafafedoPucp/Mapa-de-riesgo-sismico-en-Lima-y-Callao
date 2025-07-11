@@ -185,7 +185,7 @@ st.write("### Selecciona una variable para visualizar en el mapa:")
 # st.session_state se usa para guardar el estado de la aplicación, como qué botón está presionado.
 # Esto evita que la selección se reinicie cada vez que el usuario interactúa.
 if 'vista_seleccionada' not in st.session_state:
-    st.session_state['vista_seleccionada'] = 'Riesgo Combinado' # Vista por defecto al abrir la app.
+    st.session_state['vista_seleccionada'] = 'Resumen de Riesgo' # Vista por defecto al abrir la app.
 
 # Diccionario que mapea el nombre del botón a la columna de datos correspondiente.
 vistas = {
@@ -194,7 +194,7 @@ vistas = {
     "Material Precario": "material_precario",
     "Damnificados": "damnificados",
     "Viviendas Destruidas": "viviendas_destruidas",
-    "Riesgo Combinado": "riesgo_combinado"
+    "Resumen de Riesgo": "riesgo_combinado"
 }
 
 # st.columns(6) crea 6 columnas de igual ancho para colocar los botones horizontalmente.
@@ -206,8 +206,8 @@ for i, (nombre_vista, _) in enumerate(list(vistas.items())[:-1]):
         st.session_state['vista_seleccionada'] = nombre_vista
 
 # Crea el último botón ("Riesgo Combinado") con un estilo primario para destacarlo.
-if cols[5].button("Riesgo Combinado", use_container_width=True, type="primary", key="btn_riesgo"):
-    st.session_state['vista_seleccionada'] = "Riesgo Combinado"
+if cols[5].button("Resumen de Riesgo", use_container_width=True, type="primary", key="btn_riesgo"):
+    st.session_state['vista_seleccionada'] = "Resumen de Riesgo"
 
 # ==============================================================================
 # 6. CREACIÓN Y VISUALIZACIÓN DEL MAPA
@@ -247,8 +247,8 @@ st.subheader(f"Descripción de la variable: {vista_actual}")
 
 # Diccionario con los textos explicativos para cada vista.
 descripciones = {
-    "Riesgo Combinado": "Este índice es un promedio normalizado de todas las variables, ofreciendo una visión general del riesgo sísmico. Un valor más alto indica una mayor vulnerabilidad combinada.",
-    "Peligrosidad Suelos": "Mide la probabilidad de que el suelo amplifique las ondas sísmicas. Los valores más altos (suelos arenosos o blandos) son más peligrosos que los valores bajos (roca o conglomerado).",
+    "Resumen de Riesgo": "Este índice es un promedio normalizado de todas las variables, ofreciendo una visión general del riesgo sísmico. Un valor más alto indica una mayor vulnerabilidad combinada.",
+    "Peligrosidad Suelos": "Mide la probabilidad de que el suelo predominante del distrito amplifique las ondas sísmicas. Los valores más altos (suelos arenosos o blandos) son más peligrosos que los valores bajos (roca o conglomerado).",
     "Densidad Poblacional": "Representa la cantidad de habitantes por kilómetro cuadrado. Una mayor densidad puede complicar la evacuación y aumentar el número de personas afectadas.",
     "Material Precario": "Indica el número de viviendas construidas con materiales vulnerables (como adobe o quincha). A mayor número, mayor es el riesgo de colapso.",
     "Damnificados": "Muestra el número histórico de personas damnificadas por eventos sísmicos desde el año 2000 hasta 2025. Sirve como un indicador de vulnerabilidad pasada.",
@@ -271,16 +271,23 @@ st.markdown(
 # st.expander crea una sección desplegable que está colapsada por defecto.
 with st.expander("Ver Conclusiones Detalladas"):
     conclusiones = {
-        "Riesgo Combinado": """
-        El Índice de Riesgo Combinado revela que los distritos con mayor vulnerabilidad general ante un sismo son aquellos que presentan una combinación peligrosa de alta densidad poblacional, suelos de mala calidad y una gran cantidad de viviendas precarias. 
-        - Ventanilla, Villa El Salvador y San Juan de Lurigancho destacan como las zonas de más alto riesgo. Esto se debe a que no solo tienen suelos arenosos (alta peligrosidad), sino también una enorme cantidad de material precario y, en el caso de San Juan de Lurigancho, una población muy elevada.
-        - Los distritos del Callao y Carmen de la Legua Reynoso también muestran un riesgo muy alto, principalmente por la pésima calidad de sus suelos y la alta densidad.
-        - Por el contrario, distritos como La Molina, San Borja y San Isidro presentan el menor riesgo combinado, gracias a sus suelos rígidos, menor cantidad de material precario y, en general, una planificación urbana más resiliente.
-        """,
+        "Resumen de Riesgo": """
+        El Índice de Resumen de Riesgo consolida múltiples factores para identificar las zonas con mayor y menor vulnerabilidad ante un sismo. Este análisis revela patrones claros en la distribución del riesgo en Lima y Callao.
+
+        **Distritos de Mayor Riesgo:**
+        - **1. Ventanilla:** Se posiciona como el distrito de más alto riesgo debido a la peor combinación de factores: una cantidad extremadamente alta de material precario (el mayor de todos con 15,000 viviendas) y una peligrosidad de suelo muy elevada (calificación de 9 sobre 10). Esta combinación lo hace excepcionalmente vulnerable a daños estructurales severos.
+        - **2. Villa El Salvador:** Su riesgo se debe principalmente a tener la peor calidad de suelo de toda el área metropolitana (calificación de 10 sobre 10), lo que magnifica drásticamente cualquier sismo. Además, presenta el historial más alto de viviendas destruidas y damnificados, evidenciando una fragilidad estructural y social recurrente.
+        - **3. San Juan de Lurigancho:** Aunque su suelo es moderadamente peligroso, su riesgo se dispara por tener la segunda mayor cantidad de viviendas precarias (casi 12,000) y una densidad poblacional considerable, lo que aumenta masivamente la exposición de su más de un millón de habitantes.
+
+        **Distritos de Menor Riesgo:**
+        - **1. La Molina:** Es consistentemente el distrito más seguro. Su bajo riesgo se debe a una excelente calidad de suelo (rocoso, con calificación de 2 sobre 10), una baja densidad poblacional y una cantidad mínima de construcciones precarias (solo 101).
+        - **2. San Borja:** Similar a La Molina, se beneficia de un suelo rígido y estable (calificación de 3 sobre 10), junto con una cantidad ínfima de material precario (solo 27 viviendas) y un historial de daños casi nulo, lo que lo convierte en una zona de muy baja vulnerabilidad.
+        - **3. San Isidro:** Su perfil de bajo riesgo se atribuye a un suelo de buena calidad, una planificación urbana que limita el material precario al mínimo (solo 11 viviendas) y una densidad poblacional moderada en comparación con los distritos más críticos.
+        """,,
         "Peligrosidad Suelos": "La peligrosidad de los suelos es un factor geológico clave. Distritos como Villa El Salvador, Chorrillos, Ventanilla y Callao son intrínsecamente más riesgosos debido a que sus suelos arenosos y blandos amplifican las ondas sísmicas. En contraste, La Molina y Chaclacayo, asentados sobre roca, son los más seguros en este aspecto.",
         "Densidad Poblacional": "Distritos como Breña, Lince y Surquillo, a pesar de su pequeño tamaño, tienen una concentración de población extremadamente alta. Esto, si bien no es un factor de daño directo, representa un riesgo social enorme, dificultando la evacuación y la respuesta de emergencia.",
         "Material Precario": "La vulnerabilidad de las construcciones es crítica. Ventanilla y San Juan de Lurigancho lideran negativamente en esta categoría, con miles de viviendas que podrían no resistir un sismo de gran magnitud. Esto indica una necesidad urgente de programas de reforzamiento estructural en estas áreas.",
-        "Damnificados": "Aunque los datos son históricos (del año 2000), distritos como Villa El Salvador y Ate muestran una alta vulnerabilidad social pasada. Esto sugiere que, sin una intervención adecuada, estos distritos podrían volver a ser los más afectados en términos de población desplazada.",
+        "Damnificados": "Teniendo en cuenta los hehcos históricos de los últimos 25 años por sismos, distritos como Villa El Salvador y Ate muestran una alta vulnerabilidad social pasada. Esto sugiere que, sin una intervención adecuada, estos distritos podrían volver a ser los más afectados en términos de población desplazada.",
         "Viviendas Destruidas": "Similar a los damnificados, el número de viviendas destruidas en el pasado en distritos como Villa El Salvador y Punta Hermosa señala las áreas donde la infraestructura ha sido históricamente más frágil. Es un llamado de atención sobre la calidad de construcción en estas zonas."
     }
     conclusion_actual = conclusiones.get(vista_actual, "")
