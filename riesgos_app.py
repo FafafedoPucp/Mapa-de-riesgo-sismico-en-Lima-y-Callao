@@ -159,11 +159,6 @@ def load_and_process_data(poblacion_data, area_data, peligrosidad_data, material
     # --- Fusionar Datos Geográficos y de Riesgo ---
     # Se define el nombre de la columna en el GeoJSON que contiene los nombres de los distritos.
     NOMBRE_COLUMNA_GEOJSON = 'distrito' 
-    
-    # Se estandarizan los nombres en ambos DataFrames para asegurar una unión correcta.
-    # Se reemplaza 'Ñ' por 'N' para que coincida con los datos de los diccionarios.
-    mapa_gdf[NOMBRE_COLUMNA_GEOJSON] = mapa_gdf[NOMBRE_COLUMNA_GEOJSON].str.upper().str.strip().str.replace('Ñ', 'N', regex=False)
-    df['distrito_data'] = df['distrito_data'].str.upper().str.strip()
 
     # Se estandarizan los nombres en ambos DataFrames (mayúsculas, sin espacios) para asegurar una unión correcta.
     mapa_gdf[NOMBRE_COLUMNA_GEOJSON] = mapa_gdf[NOMBRE_COLUMNA_GEOJSON].str.upper().str.strip()
