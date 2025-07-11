@@ -247,7 +247,7 @@ st.subheader(f"Descripción de la variable: {vista_actual}")
 
 # Diccionario con los textos explicativos para cada vista.
 descripciones = {
-    "Riesgo COmbinado": "Este índice es un promedio normalizado de todas las variables, ofreciendo una visión general del riesgo sísmico. Un valor más alto indica una mayor vulnerabilidad combinada.",
+    "Riesgo Combinado": "Este índice es un promedio normalizado de todas las variables, ofreciendo una visión general del riesgo sísmico. Un valor más alto indica una mayor vulnerabilidad combinada.",
     "Peligrosidad Suelos": "Mide la probabilidad de que el suelo predominante del distrito amplifique las ondas sísmicas. Los valores más altos (suelos arenosos o blandos) son más peligrosos que los valores bajos (roca o conglomerado).",
     "Densidad Poblacional": "Representa la cantidad de habitantes por kilómetro cuadrado. Una mayor densidad puede complicar la evacuación y aumentar el número de personas afectadas.",
     "Material Precario": "Indica el número de viviendas construidas con materiales vulnerables (como adobe o quincha). A mayor número, mayor es el riesgo de colapso.",
@@ -274,15 +274,15 @@ with st.expander("Ver Conclusiones Detalladas"):
         "Riesgo Combinado": """
         El Índice de Resumen de Riesgo consolida múltiples factores para identificar las zonas con mayor y menor vulnerabilidad ante un sismo. Este análisis revela patrones claros en la distribución del riesgo en Lima y Callao.
 
-        **Distritos de Mayor Riesgo:**
-        - **1. Ventanilla:** Se posiciona como el distrito de más alto riesgo debido a la peor combinación de factores: una cantidad extremadamente alta de material precario (el mayor de todos con 15,000 viviendas) y una peligrosidad de suelo muy elevada (calificación de 9 sobre 10). Esta combinación lo hace excepcionalmente vulnerable a daños estructurales severos.
-        - **2. Villa El Salvador:** Su riesgo se debe principalmente a tener la peor calidad de suelo de toda el área metropolitana (calificación de 10 sobre 10), lo que magnifica drásticamente cualquier sismo. Además, presenta el historial más alto de viviendas destruidas y damnificados, evidenciando una fragilidad estructural y social recurrente.
-        - **3. San Juan de Lurigancho:** Aunque su suelo es moderadamente peligroso, su riesgo se dispara por tener la segunda mayor cantidad de viviendas precarias (casi 12,000) y una densidad poblacional considerable, lo que aumenta masivamente la exposición de su más de un millón de habitantes.
+        DISTRITOS DE MAYOR RIESGO:
+        - 1. Ventanilla: Se posiciona como el distrito de más alto riesgo debido a la peor combinación de factores: una cantidad extremadamente alta de material precario (el mayor de todos con 15,000 viviendas) y una peligrosidad de suelo muy elevada (calificación de 9 sobre 10). Esta combinación lo hace excepcionalmente vulnerable a daños estructurales severos.
+        - 2. Villa El Salvador: Su riesgo se debe principalmente a tener la peor calidad de suelo de toda el área metropolitana (calificación de 10 sobre 10), lo que magnifica drásticamente cualquier sismo. Además, presenta el historial más alto de viviendas destruidas y damnificados, evidenciando una fragilidad estructural y social recurrente.
+        - 3. San Juan de Lurigancho:** Aunque su suelo es moderadamente peligroso, su riesgo se dispara por tener la segunda mayor cantidad de viviendas precarias (casi 12,000) y una densidad poblacional considerable, lo que aumenta masivamente la exposición de su más de un millón de habitantes.
 
-        **Distritos de Menor Riesgo:**
-        - **1. La Molina:** Es consistentemente el distrito más seguro. Su bajo riesgo se debe a una excelente calidad de suelo (rocoso, con calificación de 2 sobre 10), una baja densidad poblacional y una cantidad mínima de construcciones precarias (solo 101).
-        - **2. San Borja:** Similar a La Molina, se beneficia de un suelo rígido y estable (calificación de 3 sobre 10), junto con una cantidad ínfima de material precario (solo 27 viviendas) y un historial de daños casi nulo, lo que lo convierte en una zona de muy baja vulnerabilidad.
-        - **3. San Isidro:** Su perfil de bajo riesgo se atribuye a un suelo de buena calidad, una planificación urbana que limita el material precario al mínimo (solo 11 viviendas) y una densidad poblacional moderada en comparación con los distritos más críticos.
+        DISTRITOS DE MENOR RIESGO:
+        - 1. La Molina: Es consistentemente el distrito más seguro. Su bajo riesgo se debe a una excelente calidad de suelo (rocoso, con calificación de 2 sobre 10), una baja densidad poblacional y una cantidad mínima de construcciones precarias (solo 101).
+        - 2. San Borja: Similar a La Molina, se beneficia de un suelo rígido y estable (calificación de 3 sobre 10), junto con una cantidad ínfima de material precario (solo 27 viviendas) y un historial de daños casi nulo, lo que lo convierte en una zona de muy baja vulnerabilidad.
+        - 3. San Isidro: Su perfil de bajo riesgo se atribuye a un suelo de buena calidad, una planificación urbana que limita el material precario al mínimo (solo 11 viviendas) y una densidad poblacional moderada en comparación con los distritos más críticos.
         """,
         "Peligrosidad Suelos": "La peligrosidad de los suelos es un factor geológico clave. Distritos como Villa El Salvador, Chorrillos, Ventanilla y Callao son intrínsecamente más riesgosos debido a que sus suelos arenosos y blandos amplifican las ondas sísmicas. En contraste, La Molina y Chaclacayo, asentados sobre roca, son los más seguros en este aspecto.",
         "Densidad Poblacional": "Distritos como Breña, Lince y Surquillo, a pesar de su pequeño tamaño, tienen una concentración de población extremadamente alta. Esto, si bien no es un factor de daño directo, representa un riesgo social enorme, dificultando la evacuación y la respuesta de emergencia.",
